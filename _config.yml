@@ -17,7 +17,6 @@ repository: marklaszlo9/resume
 github_username:  marklaszlo9
 # Exclude metadata and development time dependencies (like Grunt plugins)
 exclude: [README.markdown]
-sass:
-  sass_dir: _sass
+
 include:
   - _site
