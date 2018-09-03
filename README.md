@@ -1,12 +1,8 @@
-# [Start Bootstrap - Resume](https://startbootstrap.com/template-overviews/resume/)
+# [Resume](https://marklaszlo.netlify.com)
 
 [Resume](https://startbootstrap.com/template-overviews/resume/) is a resume and CV theme for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/). This theme features a fixed sidebar with content sections to build a simple, yet elegant resume.
+It has been transformed to [Jekyll](https://jekyllrb.com/) by Mark Laszlo and runs on [Netlify](https://netlify.com/)
 
-## Preview
-
-[![Resume Preview](https://startbootstrap.com/assets/img/templates/resume.jpg)](https://blackrockdigital.github.io/startbootstrap-resume/)
-
-**[View Live Preview](https://blackrockdigital.github.io/startbootstrap-resume/)**
 
 ## Status
 
@@ -47,9 +43,7 @@ After installation, run `npm install` and then run `gulp dev` which will open up
 
 Have a bug or an issue with this template? [Open a new issue](https://github.com/BlackrockDigital/startbootstrap-resume/issues) here on GitHub or leave a comment on the [template overview page at Start Bootstrap](http://startbootstrap.com/template-overviews/resume/).
 
-## Custom Builds
 
-You can hire Start Bootstrap to create a custom build of any template, or create something from scratch using Bootstrap. For more information, visit the **[custom design services page](https://startbootstrap.com/bootstrap-design-services/)**.
 
 ## About
 
