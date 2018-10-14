@@ -1,19 +1,19 @@
 @charset "UTF-8";
 
 @font-face {
-  font-family: "untitled-font-1";
-  src:url("fonts/untitled-font-1.eot");
-  src:url("fonts/untitled-font-1.eot?#iefix") format("embedded-opentype"),
-    url("fonts/untitled-font-1.woff") format("woff"),
-    url("fonts/untitled-font-1.ttf") format("truetype"),
-    url("fonts/untitled-font-1.svg#untitled-font-1") format("svg");
+  font-family: "untitled-font-2";
+  src:url("fonts/untitled-font-2.eot");
+  src:url("fonts/untitled-font-2.eot?#iefix") format("embedded-opentype"),
+    url("fonts/untitled-font-2.woff") format("woff"),
+    url("fonts/untitled-font-2.ttf") format("truetype"),
+    url("fonts/untitled-font-2.svg#untitled-font-2") format("svg");
   font-weight: normal;
   font-style: normal;
 
 }
 
 [data-icon]:before {
-  font-family: "untitled-font-1" !important;
+  font-family: "untitled-font-2" !important;
   content: attr(data-icon);
   font-style: normal !important;
   font-weight: normal !important;
@@ -27,7 +27,7 @@
 
 [class^="icon-"]:before,
 [class*=" icon-"]:before {
-  font-family: "untitled-font-1" !important;
+  font-family: "untitled-font-2" !important;
   font-style: normal !important;
   font-weight: normal !important;
   font-variant: normal !important;
@@ -38,24 +38,33 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-zendesk:before {
+.icon-bitcoin:before {
+  content: "\aaa";
+}
+.icon-cloud:before {
+  content: "\baa";
+}
+.icon-devops:before {
+  content: "\caa";
+}
+.icon-icon-support:before {
   content: "\61";
 }
-.icon-azure-ml:before {
+.icon-machine-learning-studio:before {
   content: "\62";
 }
-.icon-qlik:before {
+.icon-nosql-o:before {
   content: "\63";
 }
-.icon-snowflake:before {
+.icon-qlikview:before {
   content: "\64";
 }
-.icon-tableau:before {
+.icon-r-logo:before {
   content: "\65";
 }
-.icon-nosql:before {
-  content: "\69";
+.icon-snow-flake-01:before {
+  content: "\66";
 }
-.icon-r:before {
-  content: "\6a";
+.icon-tableau:before {
+  content: "\67";
 }
