@@ -1,10 +1,7 @@
 name: Mark Laszlo - Resume
 title: Mark Laszlo - Resume
 
-# Short description (goes below the title; it will also be used in the RSS feed)
-description: Lakókocsis nyaralás Görögországban – 3 darrab jól felszerelt,légkondicionált lakókocsik várja a pihenni vágyókat. A lakókocsik Korinoson, Paraliatól 5 kilóméterre találhatóak. A kemping széles, homokos tengerparttal rendelkezik. A lakókocsik a parttól 150méterre találhatóak.
 
-# Your name, as you want it to appear underneath each post and in the footer
 author: Mark
 
 # Your email if you want it to be linked on the contact page
@@ -18,3 +15,10 @@ exclude: [README.markdown]
 
 include:
   - _site
+
+defaults:
+  -
+    scope:
+      path: /megas/
+    values:
+      redirect: https://youtu.be/jvWN71nXd08
