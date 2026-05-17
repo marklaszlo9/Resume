@@ -1,16 +1,12 @@
-name: Mark Laszlo - Resume
-title: Mark Laszlo - Resume
+name: Mark Laszlo — Cloud Architect & GenAI Builder
+title: Mark Laszlo — Cloud Architect & GenAI Builder
 
-
-author: Mark
-
-# Your email if you want it to be linked on the contact page
-author_email: laszlomark90@gmail.com
-
+author: Mark Laszlo
+author_email: mark@ccx.hu
 
 repository: marklaszlo9/resume
-github_username:  marklaszlo9
-# Exclude metadata and development time dependencies (like Grunt plugins)
+github_username: marklaszlo9
+
 exclude: [README.markdown]
 
 include:

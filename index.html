@@ -1,546 +1,689 @@
 <!DOCTYPE html>
-
-<html>
-  <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mark Laszlo — Cloud Architect & GenAI Builder</title>
 
-  <head>
-    <title>Mark Laszlo - AWS & Google Certified Solution Architect</title>
+  <meta name="description" content="Mark Laszlo — AWS Cloud Architect, AWS Community Builder, and owner of ccx.hu. Designing scalable AWS solutions and Generative & Agentic AI applications." />
+  <meta name="keywords" content="AWS, Cloud Architect, Generative AI, Agentic AI, AWS Community Builder, ccx.hu, Mark Laszlo, Solutions Architect, DevOps, Bedrock" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0a0e1a" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Mark Laszlo - AWS & Google Certified Solution Architect. Cloud Engineer @TC2, an advanced AWS partner. I design, deliver, and operate cloud-based projects using AWS infrastructure services">
-    <meta name="keywords" content="aws expert, google expert, solution Architect, cloud engineer, devops, python, sql," >
-    <meta name="googlebot" content="index, follow" >
-    <meta name="robots" content="index, follow" >
-    <meta name="application-name" content="Mark Laszlo - AWS & Google Certified Solution Architect">
-    <meta name="msapplication-TileColor" content="#0d5eaf" >
-    <meta name="msapplication-TileImage" content="https://www.marklaszlo.com/mstile-150x150.png">
-    <meta charset="utf-8">
+  <meta property="og:title" content="Mark Laszlo — Cloud Architect & GenAI Builder" />
+  <meta property="og:description" content="AWS Cloud Architect and AWS Community Builder. Owner of ccx.hu. Building Generative & Agentic AI on AWS." />
+  <meta property="og:type" content="profile" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2322d3ee'/%3E%3Cstop offset='1' stop-color='%23a78bfa'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%230a0e1a'/%3E%3Ctext x='50%25' y='52%25' dominant-baseline='middle' text-anchor='middle' font-family='Inter,sans-serif' font-size='34' font-weight='800' fill='url(%23g)'%3EM%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
 
+  <style>
+    :root {
+      --bg: #0a0e1a;
+      --bg-elev: #111827;
+      --surface: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-strong: rgba(255, 255, 255, 0.16);
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --dim: #64748b;
+      --accent: #22d3ee;
+      --accent-2: #a78bfa;
+      --accent-soft: rgba(34, 211, 238, 0.12);
+      --radius: 14px;
+      --maxw: 980px;
+    }
 
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
 
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    /* Ambient background glow */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(60% 50% at 15% 0%, rgba(34, 211, 238, 0.10), transparent 60%),
+        radial-gradient(50% 50% at 90% 20%, rgba(167, 139, 250, 0.08), transparent 60%),
+        radial-gradient(40% 40% at 50% 100%, rgba(34, 211, 238, 0.06), transparent 60%);
+      z-index: -1;
+      pointer-events: none;
+    }
 
-    <!-- Custom fonts for this template -->
-    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="vendor/devicons/css/devicons.min.css" rel="stylesheet">
-    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
-    <link href="vendor/fontastic/styles.css" rel="stylesheet">
-    <!-- Lightbox CSS -->
-    <link href="css/lightbox.css" rel="stylesheet">
+    code, .mono { font-family: 'JetBrains Mono', monospace; }
 
-    <!-- Custom styles for this template -->
-    <link href="css/resume.min.css" rel="stylesheet">
+    a { color: var(--accent); text-decoration: none; transition: color .2s ease; }
+    a:hover { color: var(--accent-2); }
 
+    /* Layout */
+    .wrap {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
-  </head>
+    /* Nav */
+    nav.top {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      background: rgba(10, 14, 26, 0.7);
+      border-bottom: 1px solid var(--border);
+    }
+    nav.top .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 14px;
+      padding-bottom: 14px;
+    }
+    .brand {
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+    .brand .dot { color: var(--accent); }
+    .nav-links { display: flex; gap: 22px; }
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .nav-links a:hover { color: var(--text); }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+    }
 
+    /* Hero */
+    .hero {
+      padding: 96px 0 64px;
+      position: relative;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border: 1px solid var(--border-strong);
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--muted);
+      background: var(--surface);
+      margin-bottom: 24px;
+    }
+    .eyebrow .pulse {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px var(--accent);
+    }
+    h1 {
+      font-size: clamp(40px, 7vw, 68px);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin: 0 0 16px;
+      font-weight: 800;
+    }
+    h1 .grad {
+      background: linear-gradient(120deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .tagline {
+      font-size: clamp(17px, 2vw, 19px);
+      color: var(--muted);
+      max-width: 640px;
+      margin: 0 0 28px;
+    }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px 24px;
+      color: var(--dim);
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+    .meta span { display: inline-flex; align-items: center; gap: 8px; }
+    .meta a { color: var(--muted); }
+    .meta a:hover { color: var(--accent); }
 
-  <body>
+    .cta {
+      display: inline-flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 18px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      border: 1px solid var(--border-strong);
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+      transition: all .2s ease;
+    }
+    .btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+    .btn.primary {
+      background: linear-gradient(120deg, var(--accent), var(--accent-2));
+      border: none;
+      color: #0a0e1a;
+    }
+    .btn.primary:hover {
+      filter: brightness(1.1);
+      color: #0a0e1a;
+    }
 
-    <!-- header -->
+    /* Sections */
+    section.block {
+      padding: 64px 0;
+      border-top: 1px solid var(--border);
+    }
+    h2 {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      font-weight: 600;
+      margin: 0 0 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    h2::before {
+      content: "";
+      width: 24px; height: 1px;
+      background: var(--accent);
+    }
 
+    /* About */
+    .about p {
+      font-size: 17px;
+      color: #cbd5e1;
+      margin: 0 0 16px;
+    }
+    .highlight {
+      color: var(--text);
+      font-weight: 500;
+    }
+    .accent-text { color: var(--accent); }
 
-        <body id="page-top">
+    /* Skill pills */
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px;
+    }
+    .pill {
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .pill.hot {
+      color: var(--accent);
+      border-color: rgba(34, 211, 238, 0.35);
+      background: var(--accent-soft);
+    }
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
-    <a class="navbar-brand js-scroll-trigger" href="#page-top">
-      <span class="d-block d-lg-none">Mark Laszlo - Resume</span>
-      <span class="d-none d-lg-block">
-        <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="img/prof.gif" alt="">
-      </span>
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#about">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#experience">Experience</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#education">Education</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#skills">Skills</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#certs">Certificates</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#courses">Courses</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#Projects">Projects</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="https://blog.marklaszlo.com">Blog</a>
-        </li>
-      </ul>
+    /* Experience */
+    .role {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 24px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .role:last-child { border-bottom: none; }
+    .role .date {
+      color: var(--dim);
+      font-size: 13px;
+      font-family: 'JetBrains Mono', monospace;
+      padding-top: 4px;
+    }
+    .role h3 {
+      margin: 0 0 4px;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+    .role .company {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+    .role ul {
+      margin: 0;
+      padding-left: 18px;
+      color: #cbd5e1;
+    }
+    .role ul li {
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+    .role .badge-nda {
+      display: inline-block;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: rgba(167, 139, 250, 0.15);
+      color: var(--accent-2);
+      margin-left: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.05em;
+    }
+    @media (max-width: 700px) {
+      .role { grid-template-columns: 1fr; gap: 8px; }
+      .role .date { padding-top: 0; }
+    }
+
+    /* Certifications */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+    }
+    .cert {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--surface);
+      transition: all .2s ease;
+      color: var(--text);
+    }
+    .cert:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      color: var(--text);
+    }
+    .cert-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    .cert.gen .cert-icon {
+      background: rgba(167, 139, 250, 0.15);
+      color: var(--accent-2);
+    }
+    .cert-name {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+    .cert-date {
+      font-size: 12px;
+      color: var(--dim);
+      margin-top: 2px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Education */
+    .edu {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .edu:last-child { border-bottom: none; }
+    .edu h3 {
+      margin: 0 0 4px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .edu .school {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 48px 0 64px;
+      border-top: 1px solid var(--border);
+      color: var(--dim);
+      font-size: 13px;
+      text-align: center;
+    }
+    footer a { color: var(--muted); margin: 0 10px; }
+    footer a:hover { color: var(--accent); }
+
+    /* Subtle fade-in */
+    .fade {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade.in {
+      opacity: 1;
+      transform: none;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="top">
+    <div class="wrap">
+      <div class="brand">Mark Laszlo<span class="dot">.</span></div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#certs">Certifications</a>
+        <a href="#education">Education</a>
+      </div>
     </div>
   </nav>
 
-  <div class="container-fluid p-0">
+  <header class="hero wrap">
+    <div class="eyebrow"><span class="pulse"></span> AWS Community Builder · Open to work</div>
+    <h1>Cloud Architect <br/>building <span class="grad">Generative &amp; Agentic AI</span> on AWS.</h1>
+    <p class="tagline">
+      I design, deliver, and operate scalable AWS solutions — and I'm increasingly focused on
+      shipping practical GenAI and agentic systems on top of them. Owner of
+      <a href="https://ccx.hu" target="_blank" rel="noopener">ccx.hu</a>, a boutique cloud consultancy.
+    </p>
+    <div class="meta">
+      <span>📍 Hungary</span>
+    </div>
+    <div class="cta">
+      <a class="btn primary" href="https://www.linkedin.com/in/marklaszlo1/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/marklaszlo9" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://ccx.hu" target="_blank" rel="noopener">ccx.hu</a>
+    </div>
+  </header>
 
-    <section class="resume-section p-3 p-lg-5 d-flex d-column" id="about">
-      <div class="my-auto">
-        <h1 class="mb-0">Mark
-          <span class="text-primary">Laszlo</span>
-        </h1>
-        <div class="subheading mb-5">Budapest, Hungary· (+36) 30 410 7977 ·
-          <a href="mailto:hello@marklaszlo.com">hello@marklaszlo.com</a>
-        </div>
-        <p>I am working as an AWS Architect contractor at Waeg, an IBM Company</p>
-<p>I design, deliver, and operate cloud-based projects using AWS infrastructure services.</p>
-<p>I am a proud member of the  AWS Community Builders program. This program offers technical resources, mentorship, and networking opportunities to AWS enthusiasts and emerging thought leaders who are passionate about sharing knowledge and connecting with the technical community.</p><p>
-I used to be a Technical Support Engineer at Viostream in Sydney, Australia. Before life at Viostream, I was a Technical Resolution Manager at IBM Budapest Lab.
-
-I have a Master‘s degree from Aarhus University, Denmark, my Bachelor's Degree is in Electrical Engineering, therefore, I am really interested in new technologies and IT.
-
- </p>
-
-
-  <p>I have earned the following certificates:</p>
-
-  <li style="margin-left: 40px">AWS Certified Solutions Architect - Professional</li>
-  <li style="margin-left: 40px">AWS Certified DevOps Engineer - Professional</li>
-  <li style="margin-left: 40px">AWS Certified Machine Learning – Specialty</li>
-  <li style="margin-left: 40px">AWS Certified SysOps Administrator - Associate</li>
-  <li style="margin-left: 40px">AWS Certified Solutions Architect - Associate</li>
-  <li style="margin-left: 40px">AWS Certified Developer - Associate</li>
-    <li style="margin-left: 40px">AWS Certified Big Data - Speciality</li>
-    <li style="margin-left: 40px">Google Cloud Certified - Professional Cloud Architect</li><br>
-
-
-  <p>I have a great deal of stamina and work hard. I like being busy and productive. I always consider all the factors that might affect a situation. I prioritize, then act.  take a direction, follow through, and make the corrections necessary to stay on track.
-  </p>
-        <ul class="list-inline list-social-icons mb-0">
-
-          <li class="list-inline-item">
-            <a href="https://www.linkedin.com/in/marklaszlo1/">
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          <li class="list-inline-item">
-            <a href="https://github.com/marklaszlo9">
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-        </ul>
+  <section class="block about fade" id="about">
+    <div class="wrap">
+      <h2>About</h2>
+      <p>
+        I'm a seasoned <span class="highlight">AWS Cloud Architect</span> specializing in the end-to-end delivery of
+        scalable cloud solutions. As an <span class="accent-text">AWS Community Builder</span>, I stay close to
+        emerging services and a global network of cloud practitioners — currently with a sharp focus on
+        the practical applications of <span class="highlight">Generative and Agentic AI</span> on AWS.
+      </p>
+      <p>
+        I'm the owner of <a href="https://ccx.hu" target="_blank" rel="noopener">ccx.hu</a>, where I help teams
+        translate cloud and AI ambitions into shipped systems — from greenfield architectures and migrations to
+        AWS security posture hardening and LLM-powered product features.
+      </p>
+      <p>
+        Backed by an MSc from Aarhus University and a BSc in Electrical Engineering, I bring an engineering
+        mindset to ambiguous problems and enjoy the messy middle between architecture, code, and business value.
+      </p>
+      <div class="pills">
+        <span class="pill hot">Amazon Bedrock</span>
+        <span class="pill hot">Agentic AI</span>
+        <span class="pill hot">LLM Apps</span>
+        <span class="pill hot">RAG</span>
+        <span class="pill">AWS</span>
+        <span class="pill">EKS / Kubernetes</span>
+        <span class="pill">Terraform</span>
+        <span class="pill">Python</span>
+        <span class="pill">Security Hub</span>
+        <span class="pill">Serverless</span>
+        <span class="pill">Salesforce Integration</span>
+        <span class="pill">Linux</span>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="experience">
-      <div class="my-auto">
-        <h2 class="mb-5">Experience</h2>
-        <div class="resume-item d-flex flex-column flex-md-row mb-5">
-          <div class="resume-content mr-auto">
-            <h3 class="mb-0">AWS Architect</h3>
-            <div class="subheading mb-3"><a href="https://waeg.com" target="_blank">Waeg, an IBM Company </a>- Brussels, Belgium - Remote</div>
-            <p>
-<li style="margin-left: 40px">Waeg, an IBM Company is a Platinum Salesforce Partner committed to improving your business.</li>
-<li style="margin-left: 40px">Our mission is to unlock value and productivity in companies. We help companies perform better in a high-speed, complex and connected economy. As a Salesforce Partner we provide certified consultancy for your business.</li>
-<li style="margin-left: 40px">Our team is our main asset. We are a group of certified business and technology consultants working together, continuously inspiring each other to improve our skills to add value for our customers. We are experienced in various industries and work together to provide a solution that transforms your business through the power of the cloud.</li>
-            </div>
-          <div class="resume-date text-md-right">
-            <span class="text-primary">September 2021 - Present</span>
-          </div>
-        </div>
-        <div class="resume-item d-flex flex-column flex-md-row mb-5">
-          <div class="resume-content mr-auto">
-            <h3 class="mb-0">Owner</h3>
-            <div class="subheading mb-3"><a href="https://ccx.hu" target="_blank">ccX.hu</a> </div>
-            <p>
-<li style="margin-left: 40px">Next Level Cloud Consulting. Hire best in class AWS Professionals On Demand</li>
+  <section class="block fade" id="experience">
+    <div class="wrap">
+      <h2>Experience</h2>
 
-<br></p>
-            </div>
-          <div class="resume-date text-md-right">
-            <span class="text-primary">July 2020 - Present</span>
-          </div>
+      <div class="role">
+        <div class="date">2020 — Present</div>
+        <div>
+          <h3>Owner &amp; Principal Consultant</h3>
+          <div class="company"><a href="https://ccx.hu" target="_blank" rel="noopener">ccx.hu</a> — Cloud &amp; GenAI consultancy</div>
+          <ul>
+            <li>Run ccx.hu as owner — advising clients on AWS architecture, migrations, and security.</li>
+            <li>Designing and prototyping Generative &amp; Agentic AI solutions on AWS (Bedrock, agents, RAG).</li>
+            <li>Hands-on cloud delivery: from business case to production-grade implementation.</li>
+          </ul>
         </div>
-        <div class="resume-item d-flex flex-column flex-md-row mb-5">
-          <div class="resume-content mr-auto">
-            <h3 class="mb-0">Senior Cloud Architect</h3>
-            <div class="subheading mb-3"><a href="https://iamops.io" target="_blank">IAMOps Ltd </a>- Tel-Aviv, Israel - Remote</div>
-            <p>
-<li style="margin-left: 40px">Enable AWS cloud journey, create a business case, make the Cloud dream become reality.</li>
-<li style="margin-left: 40px">Design and prototype cloud solutions, create solution architecture document covering deep technical aspects of the implementation.</li>
-<li style="margin-left: 40px">Create a unified strategy for cloud transformation governance, automation, security, implementation and operations.</li>
-<li style="margin-left: 40px">Maintain project progress and documentation using Jira/Confluence.</li>
-<li style="margin-left: 40px">Analyse existing application portfolios, develop next-gen application architecture, transformation and modernisation roadmap.</li>
-<li style="margin-left: 40px">Conduct cloud solutions architecture review/audit and create review/audit report.</li>
-<br></p>
-            </div>
-          <div class="resume-date text-md-right">
-            <span class="text-primary">March 2020 - August 2021</span>
-          </div>
-        </div>
-        <div class="resume-item d-flex flex-column flex-md-row mb-5">
-          <div class="resume-content mr-auto">
-            <h3 class="mb-0">Cloud Engineer</h3>
-            <div class="subheading mb-3">TC2 - Budapest, Hungary</div>
-            <p>
-<li style="margin-left: 40px">Architect scalable, cloud-based, secure, and extensible solutions to accommodate project needs using applicable AWS infrastructure services</li>
-<li style="margin-left: 40px">Consults and makes recommendations on cloud-based application deployments to ensure that they follow best practices in the areas of security, availability, redundancy, cost optimization, and compliance controls.</li>
-<li style="margin-left: 40px">Configure and maintain AWS infrastructure, including monitoring of system health and performance, to ensure high levels of performance, availability, and security</li>
-<li style="margin-left: 40px">Provide high-level and detailed consultative solutions and technical support for cloud-related opportunities</li><br></p>
-            </div>
-          <div class="resume-date text-md-right">
-            <span class="text-primary">September 2019 - August 2021</span>
-          </div>
-        </div>
-
-        <div class="resume-item d-flex flex-column flex-md-row mb-5">
-          <div class="resume-content mr-auto">
-            <h3 class="mb-0">Technical Support Engineer</h3>
-            <div class="subheading mb-3">Viostream - Sydney, Australia</div>
-            <p>As part of the Infrastructure team I deal with unique problems every day.
-<li style="margin-left: 40px">Implementing Infrastructure as a Code projects with Terraform</li>
-<li style="margin-left: 40px">Resolve customer problems via telephone, email or remote access</li>
-<li style="margin-left: 40px">Managing live events</li><br></p>
-            </div>
-          <div class="resume-date text-md-right">
-            <span class="text-primary">Nov 2017 - May 2019</span>
-          </div>
-        </div>
-
-        <div class="resume-item d-flex flex-column flex-md-row mb-5">
-          <div class="resume-content mr-auto">
-            <h3 class="mb-0">Technical Resolution Manager</h3>
-            <div class="subheading mb-3">IBM Budapest Lab - Budapest, Hungary</div>
-            <p>After the acquisition of Ustream my position changed to Technical Resolution Manager. I was responsible for leading critical situation resolutions, resolution of customer satisfaction issues, planning, tracking and monitoring these resolution processes. My goal was to keep the customers' business perspectives as number one priority.</p>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="text-primary">April 2017 - October 2017</span>
-          </div>
-        </div>
-
-        <div class="resume-item d-flex flex-column flex-md-row mb-5">
-          <div class="resume-content mr-auto">
-            <h3 class="mb-0">Tier 3 Support Coordinator</h3>
-            <div class="subheading mb-3">Ustream - Budapest, Hungary</div>
-            <p>Handling live events and critical situations
-Coordinating arising issues between developers
-Track, monitor and report resolution activities
-Communication between the Customer Success Team and the Engineering Team</p>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="text-primary">October 2016 - April 2017</span>
-          </div>
-        </div>
-
-        <div class="resume-item d-flex flex-column flex-md-row">
-          <div class="resume-content mr-auto">
-            <h3 class="mb-0">Student Assistant</h3>
-            <div class="subheading mb-3">Agro Intelligence ApS - Aarhus, Denmark</div>
-            <p>Aarhus-based start-up company mainly focusing on robotic and automatization in agricultural projects. My job was focusing on data mining and data analysis with Matlab.</p>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="text-primary">February 2016 - April 2016</span>
-          </div>
-        </div>
-
       </div>
 
-    </section>
-
-    <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="education">
-      <div class="my-auto">
-        <h2 class="mb-5">Education</h2>
-
-        <div class="resume-item d-flex flex-column flex-md-row mb-5">
-          <div class="resume-content mr-auto">
-            <h3 class="mb-0">Aarhus University - Aarhus, Denmark</h3>
-            <div class="subheading mb-3">Master of Science - Technology Based Business Development </div>
-            <p>The MSc in Engineering – Technology Based Business Development is a research-based programme focusing on technology management, technology implementation, and engineering management.</p>
-
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="text-primary">August 2015 - June 2017</span>
-          </div>
-        </div>
-
-        <div class="resume-item d-flex flex-column flex-md-row mb-5">
-          <div class="resume-content mr-auto">
-            <h3 class="mb-0">Fachhochschule Ulm - Hochschule für Technik - Ulm, Germany</h3>
-            <div class="subheading mb-3">Bachelor of Science - Electrical engineering</div>
-          <p>Bachelor thesis - Designed a flexible controller for an old heating system. The system was controlled with Raspberry Pi.</p>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="text-primary">March 2015- June 2015</span>
-          </div>
-        </div>
-
-        <div class="resume-item d-flex flex-column flex-md-row ">
-          <div class="resume-content mr-auto">
-            <h3 class="mb-0">Óbudai Egyetem Kandó Kálmán Villamosmérnöki Kar - Budapest, Hungary</h3>
-            <div class="subheading mb-3">Bachelor of Science - Electrical engineering</div>
-            <p>Specialized in Industrial Automation - All the courses are entirely in English - Microproccessor, ARM programming - Knowledge of C and Perl programming language - Basic knowledge of Matlab </p>
-            </div>
-          <div class="resume-date text-md-right">
-            <span class="text-primary">September 2011 - June 2015</span>
-          </div>
+      <div class="role">
+        <div class="date">Dec 2023 — Present</div>
+        <div>
+          <h3>Cloud Architect <span class="badge-nda">NDA</span></h3>
+          <div class="company">EU Public Sector Institution — client name under NDA</div>
+          <ul>
+            <li>Driving AWS security posture improvements, lifting AWS Security Hub scores across accounts.</li>
+            <li>Analyzing existing AWS environments, identifying gaps, and implementing remediation aligned to security best practices.</li>
+          </ul>
         </div>
       </div>
-    </section>
 
-    <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="skills">
-      <div class="my-auto">
-        <h2 class="mb-5">Skills</h2>
-        <div class="subheading mb-3">DevOps </div>
-        <ul class="list-inline list-icons">
-
-          <li class="list-inline-item">
-            <i class="devicons devicons-python" title="Python"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="icon-terraform" title="Terraform"></i>
-          </li>
-
-          <li class="list-inline-item">
-            <i class="icon-packer" title="Packer"></i>
-
-          </li>
-
-          <li class="list-inline-item">
-            <i class="devicons devicons-terminal" title="Bash"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="devicons devicons-linux" title="Linux"></i>
-
-          </li>
-        </ul>
-
-        <div class="subheading mb-3">Customer Support </div>
-        <ul class="list-inline list-icons">
-
-          <li class="list-inline-item">
-            <i class="icon-support" title="Zendesk"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="devicons devicons-jira" title="Jira"></i>
-          </li>
-
-          <li class="list-inline-item">
-            <i class="devicons devicons-jekyll_small" title="Jekyll"></i>
-
-          </li>
-
-          <li class="list-inline-item">
-            <i class="devicons devicons-bootstrap" title="Bootstrap"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="devicons devicons-wordpress" title="WordPress"></i>
-
-          </li>
-        </ul>
-
-        <div class="subheading mb-3">Data Science </div>
-        <ul class="list-inline list-icons">
-          <li class="list-inline-item">
-            <i class="devicons devicons-python" title="Python"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="devicons devicons-mysql" title="SQL"></i>
-            <li class="list-inline-item">
-              <i class="icon-r" title="R"></i>
-            </li>
-          </li>
-          <li class="list-inline-item">
-            <i class="devicons devicons-terminal" title="Bash"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="icon-nosql" title="NoSQL"></i>
-
-          </li>
-          <li class="list-inline-item">
-            <i class="icon-snowflake" title="Snowflake"></i>
-
-          </li>
-          <li class="list-inline-item">
-            <i class="icon-tableau" title="Tableau"></i>
-
-          </li>
-          <li class="list-inline-item">
-            <i class="icon-qlik" title="Qlik"></i>
-
-          </li>
-          <li class="list-inline-item">
-            <i class="icon-azure-ml" title="Azure Machine Learning Studio"></i>
-
-          </li>
-
-        </ul>
+      <div class="role">
+        <div class="date">Oct 2022 — Dec 2023</div>
+        <div>
+          <h3>Senior Cloud Architect</h3>
+          <div class="company">AGCO Corporation</div>
+          <ul>
+            <li>Migrated on-premise applications to AWS, optimizing for performance and cost-efficiency.</li>
+            <li>Spearheaded application migration to Amazon EKS for seamless containerized deployments.</li>
+          </ul>
+        </div>
       </div>
-    </section>
 
-    <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="certs">
-      <div class="my-auto">
-        <h2 class="mb-5">Certificates</h2>
-        <p> <i class="devicons devicons-google-cloud-platform"></i> <a href="https://www.credential.net/m8qcyoin?key=9fc8d969e09ecdd4334e1634a8c50d266b47c9b3fb392de9c70b5453f2f48d42">Google Cloud Certified - Professional Cloud Architect</a>
-        <p> <i class="devicons devicons-aws"></i> <a href="https://www.marklaszlo.com/sa-pro.pdf" target="_blank">AWS Certified Solutions Architect - Professional</a>
-        <p> <i class="devicons devicons-aws"></i> <a href="https://www.marklaszlo.com/devops.pdf" target="_blank">AWS Certified DevOps Engineer - Professional</a>
-          <p> <i class="devicons devicons-aws"></i> <a href="https://www.marklaszlo.com/awsml.pdf" target="_blank">AWS Certified Machine Learning - Speciality</a>
-        <p> <i class="devicons devicons-aws"></i> <a href="https://www.marklaszlo.com/awsbigdata.pdf" target="_blank">AWS Certified Big Data - Speciality</a>
-          <p> <i class="devicons devicons-aws"></i> <a href="https://www.marklaszlo.com/sysops.pdf" target="_blank">AWS Certified SysOps Administrator - Associate</a>
-<p> <i class="devicons devicons-aws"></i> <a href="https://www.marklaszlo.com/sa-a.pdf" target="_blank">AWS Certified Solutions Architect - Associate</a>
-  <p> <i class="devicons devicons-aws"></i> <a href="https://www.marklaszlo.com/dev.pdf" target="_blank">AWS Certified Developer - Associate</a>
-
-
+      <div class="role">
+        <div class="date">Sep 2021 — Oct 2022</div>
+        <div>
+          <h3>AWS Architect</h3>
+          <div class="company">Waeg, an IBM Company</div>
+          <ul>
+            <li>Architected a greenfield, containerized application on AWS — fully scalable, resilient, with Salesforce integration.</li>
+            <li>Engineered a highly cost-optimized infrastructure resulting in minimal operational run-cost.</li>
+          </ul>
+        </div>
       </div>
-        </section>
-    <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="courses">
-      <div class="my-auto">
-        <h2 class="mb-5">Courses</h2>
-        <p> <i class="devicons devicons-python"></i> Foundations of Data Science: Computational Thinking with Python - <a href="https://www.edx.org/course/foundations-data-science-computational-uc-berkeleyx-data8-1x" target="_blank">BerkeleyX -edx.org </a>
-            - <a href="https://res.cloudinary.com/korinos-hu/image/upload/f_auto,q_auto/v1541402621/edx/Foundations_of_Data_Science__Computational_Thinking_with_Python.png" data-lightbox="image-1">Results</a></p>
-        <p> <i class="devicons devicons-mysql"></i> Intro to Relational Databases - <a href="https://www.udacity.com/course/intro-to-relational-databases--ud197" target="_blank">Udacity </a>
-            - <a href="https://res.cloudinary.com/korinos-hu/image/upload/f_auto,q_auto/v1541402621/edx/Intro_to_Relational_Databases.png" data-lightbox="image-1">Results</a></p>
-        <p> <i class="devicons devicons-python"></i> Introduction to Python Programming - <a href="#"> Udacity</a>
-            - <a href="https://res.cloudinary.com/korinos-hu/image/upload/f_auto,q_auto/v1541402621/edx/Introduction_to_Python_Programming.png" data-lightbox="image-1">Results</a></p>
-        <p> <i class="devicons devicons-python"></i> Introduction to Python: Creating Scalable, Robust, Interactive Code - <a href="https://www.edx.org/introduction-to-python-creating-scalable-robust-interactive-code" target="_blank">Microsoft - edx.org</a>
-            - <a href="https://res.cloudinary.com/korinos-hu/image/upload/f_auto,q_auto/v1541402621/edx/Introduction_to_Python__Creating_Scalable_Robust_Interactive_Code.png" data-lightbox="image-1">Results</a></p>
-        <p> <i class="devicons devicons-python"></i> Introduction to Python: Fundamentals - <a href="https://www.edx.org/course/introduction-to-python-fundamentals" target="_blank">Microsoft - edx.org </a>
-            - <a href="https://res.cloudinary.com/korinos-hu/image/upload/f_auto,q_auto/v1541402621/edx/Introduction_to_Python__Fundamentals.png" data-lightbox="image-1">Results</a></p>
-        <p> <i class="devicons devicons-mysql"></i> Querying Data with Transact-SQL - <a href="https://www.edx.org/course/querying-data-with-transact-sql" target="_blank">Microsoft - edx.org</a>
-            - <a href="https://res.cloudinary.com/korinos-hu/image/upload/f_auto,q_auto/v1541402621/edx/Querying_Data_with_Transact-SQL.png" data-lightbox="image-1">Results</a></p>
-        <p> <i class="devicons devicons-terminal"></i> Shell workshop - <a href="https://www.udacity.com/course/shell-workshop--ud206" target="_blank"> Udacity </a>
-            - <a href="https://res.cloudinary.com/korinos-hu/image/upload/f_auto,q_auto/v1541402621/edx/Shell_workshop.png" data-lightbox="image-1">Results</a></p>
-        <p> <i class="devicons devicons-python"></i> Introduction to Python for Data Science - <a href="https://www.edx.org/course/data-science-r-basics" target="_blank">Microsoft - edx.org</a>
-            - <a href="https://res.cloudinary.com/korinos-hu/image/upload/f_auto,q_auto/v1541402621/edx/Introduction_to_Python_for_Data_Science.png" data-lightbox="image-1">Results</a></p>
-        <p> <i class="devicons devicons-python"></i> Data Science Essentials - <a href="https://www.edx.org/course/data-science-r-basics" target="_blank">Microsoft - edx.org</a>
-            - <a href="https://res.cloudinary.com/korinos-hu/image/upload/f_auto,q_auto/v1541402621/edx/Data_Science_Essentials.png" data-lightbox="image-1">Results</a></p>
-        <p> <i class="devicons devicons-database"></i> Introduction to NoSQL Data Solutions - <a href="https://www.edx.org/course/developing-nosql-solutions-in-azure" target="_blank">Microsoft - edx.org</a>
-            - <a href="https://res.cloudinary.com/korinos-hu/image/upload/f_auto,q_auto/v1541402621/edx/Introduction_to_NoSQL_Data_Solutions.png" data-lightbox="image-1">Results</a></p>
-        <p> <i class="icon-r"></i> Data Science: Probability - <a href="https://www.edx.org/course/data-science-probability-harvardx-ph125-3x" target="_blank">HarvardX - edx.org</a>
-            - <a href="https://res.cloudinary.com/korinos-hu/image/upload/f_auto,q_auto/v1541402621/edx/Data_Science__Probability.png" data-lightbox="image-1">Results</a></p>
-        <p> <i class="icon-r"></i> Data Science: R Basics - <a href="https://www.edx.org/course/data-science-r-basics" target="_blank">HarvardX - edx.org</a>
-            - <a href="https://res.cloudinary.com/korinos-hu/image/upload/f_auto,q_auto/v1541402621/edx/Data_Science__R_Basics.png" data-lightbox="image-1">Results</a></p>
-        <p> <i class="icon-r"></i> Data Science: Visualization - <a href="https://www.edx.org/course/data-science-visualization-harvardx-ph125-2x" target="_blank">HarvardX - edx.org</a>
-            - <a href="https://res.cloudinary.com/korinos-hu/image/upload/f_auto,q_auto/v1541402621/edx/Data_Science__Visualization.png" data-lightbox="image-1">Results</a></p>
-        <p> <i class="icon-r"></i> Data Science: Inference and Modeling - <a href="https://www.edx.org/course/data-science-inference" target="_blank">HarvardX - edx.org</a>
-            - <a href="https://res.cloudinary.com/korinos-hu/image/upload/f_auto,q_auto/v1541402621/edx/Data_Science__Inference_and_Modeling.png" data-lightbox="image-1">Results</a></p>
-        <p> <i class="devicons devicons-python"></i> Foundations of Data Science: Inferential Thinking by Resampling - <a href="https://www.edx.org/course/foundations-data-science-inferential-uc-berkeleyx-data8-2x" target="_blank">BerkeleyX -edx.org </a>
-            - <a href="https://res.cloudinary.com/korinos-hu/image/upload/f_auto,q_auto/v1541402621/edx/Foundations_of_Data_Science__Inferential_Thinking_by_Resampling.png" data-lightbox="image-1">Results</a></p>
-        <p> <i class="devicons devicons-python"></i> Statistical Thinking for Data Science and Analytics - <a href="https://www.edx.org/course/statistical-thinking-for-data-science-and-analytics" target="_blank">ColumbiaX -edx.org </a>
-            - <a href="https://res.cloudinary.com/korinos-hu/image/upload/f_auto,q_auto/v1541402621/edx/Statistical_Thinking_for_Data_Science_and_Analytics.png" data-lightbox="image-1">Results</a></p>
-        <p> <i class="devicons devicons-python"></i> Python for Data Science - <a href="https://www.edx.org/course/python-for-data-science" target="_blank">UC San DiegoX -edx.org </a>
-            - <a href="https://res.cloudinary.com/korinos-hu/image/upload/f_auto,q_auto/v1541402621/edx/Python_for_Data_Science.png" data-lightbox="image-1">Results</a></p>
-        <p> <i class="devicons devicons-terminal"></i> Data Science: Productivity Tools - <a href="https://www.edx.org/course/data-science-productivity-tools-harvardx-ph125-5x" target="_blank">HarvardX -edx.org </a>
-            - <a href="https://res.cloudinary.com/korinos-hu/image/upload/f_auto,q_auto/v1541402621/edx/Data_Science__Productivity_Tools.png" data-lightbox="image-1">Results</a></p>
-        <p> <i class="icon-r"></i> Data Science: Wrangling - <a href="https://www.edx.org/course/data-science-wrangling-harvardx-ph125-6x" target="_blank">HarvardX -edx.org </a>
-            - <a href="https://res.cloudinary.com/korinos-hu/image/upload/f_auto,q_auto/v1541402621/edx/Data_Science__Wrangling.png" data-lightbox="image-1">Results</a></p>
-        <p> <i class="devicons devicons-python"></i> Foundations of Data Science: Prediction and Machine Learning - <a href="https://www.edx.org/course/foundations-data-science-prediction-uc-berkeleyx-data8-3x" target="_blank">BerkeleyX -edx.org </a>
-            - <a href="https://res.cloudinary.com/korinos-hu/image/upload/f_auto,q_auto/v1541402621/edx/Foundations_of_Data_Science__Prediction_and_Machine_Learning.png" data-lightbox="image-1">Results</a></p>
-        <p> <i class="icon-r"></i> Data Science: Linear Regression - <a href="https://www.edx.org/course/data-science-linear-regression" target="_blank">HarvardX -edx.org </a>
-            - <a href="https://res.cloudinary.com/korinos-hu/image/upload/f_auto,q_auto/v1541402621/edx/Data_Science__Linear_Regression.png" data-lightbox="image-1">Results</a></p>
-        <p> <i class="devicons devicons-aws"></i> AWS Developer: Building on AWS - <a href="https://www.edx.org/course/aws-developer-building-on-aws" target="_blank">AWS -edx.org </a>
-          - <a href="https://res.cloudinary.com/korinos-hu/image/upload/f_auto,q_auto/v1541402621/edx/AWS_Developer__Building_on_AWS.png" data-lightbox="image-1">Results</a></p>
-        <p> <i class="icon-ccomp"></i> Introduction to Cloud Infrastructure Technologies - <a href="https://www.edx.org/course/introduction-to-cloud-infrastructure-technologies" target="_blank">Linux Foundation -edx.org </a>
-            - <a href="https://res.cloudinary.com/korinos-hu/image/upload/f_auto,q_auto/v1541402621/edx/Introduction_to_Cloud_Infrastructure_Technologies.png" data-lightbox="image-1">Results</a></p>
-        <p> <i class="icon-devops"></i> Introduction to DevOps: Transforming and Improving Operations - <a href="https://www.edx.org/course/introduction-to-devops-transforming-and-improving-operations" target="_blank">Linux Foundation -edx.org </a>
-            - <a href="https://res.cloudinary.com/korinos-hu/image/upload/f_auto,q_auto/v1541402621/edx/Introduction_to_DevOps__Transforming_and_Improving_Operations.png" data-lightbox="image-1">Results</a></p>
-        <p> <i class="devicons devicons-aws"></i> AWS Developer: Optimizing on AWS - <a href="https://www.edx.org/course/aws-developer-optimizing-on-aws" target="_blank">AWS -edx.org </a>
-            - <a href="https://res.cloudinary.com/korinos-hu/image/upload/f_auto,q_auto/v1541402621/edx/AWS_Developer__Optimizing_on_AWS.png" data-lightbox="image-1">Results</a></p>
-        <p> <i class="devicons devicons-aws"></i> AWS Developer: Deploying on AWS - <a href="https://www.edx.org/course/aws-developer-deploying-on-aws" target="_blank">AWS -edx.org </a>
-            - <a href="https://res.cloudinary.com/korinos-hu/image/upload/f_auto,q_auto/v1541402621/edx/AWS_Developer__Deploying_on_AWS.png" data-lightbox="image-1">Results</a></p>
-        <p> <i class="icon-ccomp"></i> Cloud Computing Management - <a href="https://www.edx.org/course/cloud-computing-management-0" target="_blank">USMx -edx.org </a>
-            - <a href="https://res.cloudinary.com/korinos-hu/image/upload/f_auto,q_auto/v1541402621/edx/Cloud_Computing_Management.png" data-lightbox="image-1">Results</a></p>
-        <p> <i class="icon-bitcoin"></i> Bitcoin and Cryptocurrencies - <a href="https://www.edx.org/course/bitcoin-and-cryptocurrencies" target="_blank">BerkeleyX -edx.org </a>
-            - <a href="https://res.cloudinary.com/korinos-hu/image/upload/f_auto,q_auto/v1541402621/edx/Bitcoin_and_Cryptocurrencies.png" data-lightbox="image-1">Results</a></p>
-        <p> <i class="icon-ccomp"></i> 26 different A Cloud Guru courses - <a href="https://www.acloud.guru">A Cloud Guru </a>
-            - <a href="https://drive.google.com/drive/folders/1mFEun9440KUuM_VJH08v3chwvFoY-4XV?usp=sharing" target="_blank">Certificates</a></p>
-        <p> <i class="devicons devicons-google-cloud-platform"></i> Elastic Cloud Infrastructure: Containers and Services - <a href="https://www.coursera.org" target="_blank">Coursera </a>
-            - <a href="https://www.coursera.org/account/accomplishments/verify/WY9YHB9DHDPA" target="_blank">Certificate</a></p>
-            <p> <i class="devicons devicons-google-cloud-platform"></i> Elastic Cloud Infrastructure: Scaling and Automation - <a href="https://www.coursera.org" target="_blank">Coursera </a>
-            - <a href="https://www.coursera.org/account/accomplishments/verify/Z2HTKVXMDQE2" target="_blank">Certificate</a></p>
-        <p> <i class="devicons devicons-google-cloud-platform"></i> Essential Cloud Infrastructure: Core Services - <a href="https://www.coursera.org" target="_blank">Coursera </a>
-            - <a href="https://www.coursera.org/account/accomplishments/verify/CJ82B7W2M4ZP" target="_blank">Certificate</a></p>
-        <p> <i class="devicons devicons-google-cloud-platform"></i> Essential Cloud Infrastructure: Foundations - <a href="https://www.coursera.org" target="_blank">Coursera </a>
-            - <a href="https://www.coursera.org/account/accomplishments/verify/RMRBREP7S74Z" target="_blank">Certificate</a></p>
-        <p> <i class="devicons devicons-google-cloud-platform"></i> Google Cloud Platform Fundamentals: Core Infrastructure - <a href="https://www.coursera.org" target="_blank">Coursera </a>
-            - <a href="https://www.coursera.org/account/accomplishments/verify/KMS7XTC6CY6K" target="_blank">Certificate</a></p>
-        <p> <i class="devicons devicons-google-cloud-platform"></i> Reliable Cloud Infrastructure: Design and Process - <a href="https://www.coursera.org" target="_blank">Coursera </a>
-            - <a href="https://www.coursera.org/account/accomplishments/verify/WY9YHB9DHDPA" target="_blank">Certificate</a></p>
 
+      <div class="role">
+        <div class="date">Mar 2020 — Aug 2021</div>
+        <div>
+          <h3>Senior Cloud Architect</h3>
+          <div class="company">IAMOps — DevOps for Startups</div>
+          <ul>
+            <li>Enabled clients' AWS cloud journey — business case, architecture, and execution.</li>
+            <li>Created unified strategies for cloud transformation: governance, automation, security, operations.</li>
+            <li>Conducted cloud architecture reviews and audits; produced next-gen modernization roadmaps.</li>
+          </ul>
+        </div>
       </div>
-    </section>
 
-    <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="Projects">
-      <div class="my-auto">
-        <h2 class="mb-5">Projects</h2>
-        <ul class="fa-ul mb-0">
-          <div class="resume-item d-flex flex-column flex-md-row mb-5">
-            <div class="resume-content mr-auto">
-              <h3 class="mb-0">IT4IT in practice in a medium sized company</h3>
-
-              <p>During this research I've investigated how IT4IT can help to manage IT in a medium-scale Enterprise. It has been identified that 2 out 4 value streams' goals are very similar to DevOps' main principles, so simultaneous implementation of DevOps and IT4IT is possible. </p>
-            </div>
-
-          </div>
-          <div class="resume-item d-flex flex-column flex-md-row mb-5">
-            <div class="resume-content mr-auto">
-              <h3 class="mb-0">Video stream monitoring</h3>
-
-            <p>The popularity of the online video is continuously increasing and this statement is even more valid for online video streaming. However, video streaming requires a lot of resources and services. During this study different monitoring tools were tested and compared to best practices recommended by Dye.</p>
-          </div>
-          </div>
-          <div class="resume-item d-flex flex-column flex-md-row mb-5">
-            <div class="resume-content mr-auto">
-              <h3 class="mb-0">Optimize and innovate business processes with IT solutions in small scale enterprise</h3>
-              <p>This project is about how current IT solutions can help to optimize and innovate business processes in a small scale business, located in Hungary. Using different BI applications and a logistic application, some areas had been identified, where the company can improve their processes and also reduce costs. The project also gives a confirmation about, how seasons and weather impacts the enterprise's sales and profit.</p>
-          </div>
-          </div>
-          <div class="resume-item d-flex flex-column flex-md-row mb-5">
-            <div class="resume-content mr-auto">
-              <h3 class="mb-0">Route optimization for PostNord Aarhus</h3>
-              <p> The aim of the project was to find a solution for PostNord’s vehicle routing problem, in order to decrease the overtime of the workers. Several methods (heuristics, SmartVRP, Solver) was used during the project.</p>
-          </div>
-          </div>
-        </ul>
+      <div class="role">
+        <div class="date">Sep 2019 — Aug 2021</div>
+        <div>
+          <h3>Cloud Engineer</h3>
+          <div class="company">TC2 — Budapest, Hungary</div>
+          <ul>
+            <li>Architected scalable, secure, extensible AWS solutions tailored to project needs.</li>
+            <li>Advised on cloud deployments around security, availability, redundancy, cost optimization, and compliance.</li>
+          </ul>
+        </div>
       </div>
-    </section>
 
-  </div>
+      <div class="role">
+        <div class="date">Nov 2017 — May 2019</div>
+        <div>
+          <h3>Technical Support Engineer</h3>
+          <div class="company">Viostream — Sydney, Australia</div>
+          <ul>
+            <li>Infrastructure-as-Code with Terraform and Packer; video encoding/packaging pipelines.</li>
+            <li>Daily work across CSS/HTML, SQL, and Python.</li>
+          </ul>
+        </div>
+      </div>
 
+      <div class="role">
+        <div class="date">Sep 2016 — Oct 2017</div>
+        <div>
+          <h3>Technical Resolution Manager</h3>
+          <div class="company">IBM Budapest Lab</div>
+          <ul>
+            <li>Handled live events and critical situations; coordinated issue resolution across engineering and customer success.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <section class="block fade" id="certs">
+    <div class="wrap">
+      <h2>Certifications</h2>
+      <div class="cert-grid">
+        <a class="cert gen" href="#" target="_blank" rel="noopener">
+          <div class="cert-icon">AI</div>
+          <div>
+            <div class="cert-name">AWS Certified Generative AI Developer — Professional</div>
+            <div class="cert-date">2025</div>
+          </div>
+        </a>
+        <a class="cert gen" href="certificate.pdf" target="_blank" rel="noopener">
+          <div class="cert-icon">AI</div>
+          <div>
+            <div class="cert-name">Oracle Cloud Generative AI — Professional</div>
+            <div class="cert-date">Jul 2024</div>
+          </div>
+        </a>
+        <a class="cert" href="sa-pro.pdf" target="_blank" rel="noopener">
+          <div class="cert-icon">AWS</div>
+          <div>
+            <div class="cert-name">AWS Certified Solutions Architect — Professional</div>
+            <div class="cert-date">Feb 2019 → Jan 2028</div>
+          </div>
+        </a>
+        <a class="cert" href="devops.pdf" target="_blank" rel="noopener">
+          <div class="cert-icon">AWS</div>
+          <div>
+            <div class="cert-name">AWS Certified DevOps Engineer — Professional</div>
+            <div class="cert-date">Jan 2019 → Jan 2028</div>
+          </div>
+        </a>
+        <a class="cert" href="#" target="_blank" rel="noopener">
+          <div class="cert-icon">AWS</div>
+          <div>
+            <div class="cert-name">AWS Certified Security — Specialty</div>
+            <div class="cert-date">Jun 2023 → Jun 2026</div>
+          </div>
+        </a>
+        <a class="cert" href="sysops.pdf" target="_blank" rel="noopener">
+          <div class="cert-icon">AWS</div>
+          <div>
+            <div class="cert-name">AWS Certified SysOps Administrator — Associate</div>
+            <div class="cert-date">Jan 2022 → Jan 2028</div>
+          </div>
+        </a>
+        <a class="cert" href="sa-a.pdf" target="_blank" rel="noopener">
+          <div class="cert-icon">AWS</div>
+          <div>
+            <div class="cert-name">AWS Certified Solutions Architect — Associate</div>
+            <div class="cert-date">Jan 2022 → Jan 2028</div>
+          </div>
+        </a>
+        <a class="cert" href="dev.pdf" target="_blank" rel="noopener">
+          <div class="cert-icon">AWS</div>
+          <div>
+            <div class="cert-name">AWS Certified Developer — Associate</div>
+            <div class="cert-date">Jan 2022 → Jan 2028</div>
+          </div>
+        </a>
+        <a class="cert" href="awsml.pdf" target="_blank" rel="noopener">
+          <div class="cert-icon">AWS</div>
+          <div>
+            <div class="cert-name">AWS Certified Machine Learning — Specialty</div>
+            <div class="cert-date">archived</div>
+          </div>
+        </a>
+        <a class="cert" href="gitops-fundamentals.pdf" target="_blank" rel="noopener">
+          <div class="cert-icon">K8s</div>
+          <div>
+            <div class="cert-name">GitOps Fundamentals</div>
+            <div class="cert-date">2024</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
 
-    <!-- Bootstrap core JavaScript -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <section class="block fade" id="education">
+    <div class="wrap">
+      <h2>Education</h2>
+      <div class="edu">
+        <h3>MSc in Engineering — Technology Based Business Development</h3>
+        <div class="school">Aarhus University, Denmark</div>
+      </div>
+      <div class="edu">
+        <h3>BSc Electrical Engineering (English Course)</h3>
+        <div class="school">Óbudai Egyetem, Kandó Kálmán Faculty of Electrical Engineering, Hungary</div>
+      </div>
+    </div>
+  </section>
 
-<!-- Plugin JavaScript -->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <footer>
+    <div class="wrap">
+      <a href="https://ccx.hu" target="_blank" rel="noopener">ccx.hu</a>
+      <a href="https://www.linkedin.com/in/marklaszlo1/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/marklaszlo9" target="_blank" rel="noopener">GitHub</a>
+      <div style="margin-top: 20px;">© <span id="year"></span> Mark Laszlo · Built simple, on purpose.</div>
+    </div>
+  </footer>
 
-<!-- Custom scripts for this template -->
-<script src="js/resume.min.js"></script>
-<!-- Lightbox scripts -->
-<script src="js/lightbox.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125093148-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade').forEach(el => io.observe(el));
+  </script>
 
-  gtag('config', 'UA-125093148-1');
-</script>
-
-
-  </body>
-
+  <!-- Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-125093148-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-125093148-1');
+  </script>
+</body>
 </html>
